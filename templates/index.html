@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookWorld - Your Gateway to Books</title>
+    <link rel="icon" type="image/png" href="/static/images/logo.png">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="/static/images/logo.png" alt="BookWorld Logo" class="nav-logo">
+                <span class="nav-title">BookWorld</span>
+            </div>
+            
+            <div class="nav-center">
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search for books...">
+                    <div id="searchSuggestions" class="search-suggestions"></div>
+                </div>
+            </div>
+            
+            <div class="nav-links">
+                <button class="nav-btn" id="homeBtn">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </button>
+                <button class="nav-btn" id="categoriesBtn">
+                    <i class="fas fa-th-large"></i>
+                    <span>Categories</span>
+                </button>
+                <button class="nav-btn" id="wishlistBtn">
+                    <i class="fas fa-heart"></i>
+                    <span>Wishlist</span>
+                    <span class="badge" id="wishlistCount">0</span>
+                </button>
+                <button class="nav-btn" id="notificationBtn">
+                    <i class="fas fa-bell"></i>
+                    <span>Notifications</span>
+                    <span class="badge" id="notificationCount">0</span>
+                </button>
+                <div class="profile-dropdown">
+                    <button class="nav-btn" id="profileBtn">
+                        <i class="fas fa-user"></i>
+                        <span id="profileName">Profile</span>
+                    </button>
+                    <div class="dropdown-menu" id="profileDropdown">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Welcome to BookWorld</h1>
+            <p class="hero-subtitle">Your gateway to thousands of books - Read, Discover, Explore</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" id="freeReadingBtn">
+                    <i class="fas fa-book-open"></i>
+                    Free Reading
+                </button>
+                <button class="btn btn-secondary" id="paidReadingBtn">
+                    <i class="fas fa-crown"></i>
+                    Premium Reading
+                </button>
+                <button class="btn btn-outline" id="exploreBooksBtn">
+                    <i class="fas fa-compass"></i>
+                    Explore Books
+                </button>
+            </div>
+        </div>
+        <div class="hero-image">
+            <i class="fas fa-book-reader"></i>
+        </div>
+    </section>
+
+    <!-- Browse Categories Section -->
+    <section class="categories-section" id="categoriesSection">
+        <div class="container">
+            <h2 class="section-title">Browse by Categories</h2>
+            <p class="section-subtitle">Explore thousands of books across different genres</p>
+            <div class="categories-grid" id="categoriesGrid">
+                <!-- Categories will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Books Display Section -->
+    <section class="books-section" id="booksSection">
+        <div class="container">
+            <h2 class="section-title" id="booksSectionTitle">Top 10 Trending Books</h2>
+            <div class="books-grid" id="booksGrid">
+                <!-- Books will be populated by JavaScript -->
+            </div>
+            <div class="loading" id="booksLoading">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>Loading books...</p>
+            </div>
+            <div class="error-message" id="booksError"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">
+                        <img src="/static/images/logo.png" alt="BookWorld Logo" class="footer-logo">
+                        <h3>BookWorld</h3>
+                    </div>
+                    <p class="footer-description">
+                        Your premier destination for discovering and reading books from around the world. 
+                        Explore thousands of titles across all genres.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#categoriesSection">Categories</a></li>
+                        <li><a href="#" id="footerFreeBooks">Free Books</a></li>
+                        <li><a href="#" id="footerPremiumBooks">Premium Books</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#" id="termsLink">Terms of Service</a></li>
+                        <li><a href="#" id="privacyLink">Privacy Policy</a></li>
+                        <li><a href="#" id="contactLink">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="disclaimer">
+                    <strong>Disclaimer:</strong> BookWorld is a book discovery platform that aggregates publicly available 
+                    book information from Google Books API. We do not claim ownership of any book content, covers, or metadata. 
+                    All rights belong to their respective authors, publishers, and copyright holders. 
+                    Links to read or preview books redirect to authorized sources. For copyright concerns, please contact us.
+                </p>
+                <p class="copyright">
+                    © 2026 BookWorld. All rights reserved. | Powered by Google Books API
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Book Detail Modal -->
+    <div class="modal" id="bookModal">
+        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-body" id="modalBody">
+                <!-- Book details will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div class="modal" id="authModal">
+        <div class="modal-overlay" id="authModalOverlay"></div>
+        <div class="modal-content modal-small">
+            <button class="modal-close" id="authModalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-body" id="authModalBody">
+                <!-- Auth forms will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Wishlist Modal -->
+    <div class="modal" id="wishlistModal">
+        <div class="modal-overlay" id="wishlistModalOverlay"></div>
+        <div class="modal-content modal-large">
+            <button class="modal-close" id="wishlistModalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-body" id="wishlistModalBody">
+                <!-- Wishlist will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Notifications Modal -->
+    <div class="modal" id="notificationsModal">
+        <div class="modal-overlay" id="notificationsModalOverlay"></div>
+        <div class="modal-content modal-medium">
+            <button class="modal-close" id="notificationsModalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-body">
+                <h2>Notifications</h2>
+                <div id="notificationsList">
+                    <div class="notification-item">
+                        <i class="fas fa-info-circle"></i>
+                        <div>
+                            <h4>Welcome to BookWorld!</h4>
+                            <p>Start exploring thousands of books across all genres.</p>
+                            <span class="notification-time">Just now</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Chatbot -->
+    <div class="chatbot" id="chatbot">
+        <button class="chatbot-toggle" id="chatbotToggle">
+            <i class="fas fa-robot"></i>
+        </button>
+        <div class="chatbot-window" id="chatbotWindow">
+            <div class="chatbot-header">
+                <div>
+                    <i class="fas fa-robot"></i>
+                    <span>AI Book Assistant</span>
+                </div>
+                <button class="chatbot-minimize" id="chatbotMinimize">
+                    <i class="fas fa-minus"></i>
+                </button>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages">
+                <div class="chatbot-message bot-message">
+                    <i class="fas fa-robot"></i>
+                    <p>Hello! I'm your AI book assistant. Tell me what kind of books you're interested in, and I'll recommend some great reads!</p>
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbotInput" placeholder="Tell me your interests...">
+                <button id="chatbotSend">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Modules -->
+    <script src="/static/js/config.js"></script>
+    <script src="/static/js/api.js"></script>
+    <script src="/static/js/auth.js"></script>
+    <script src="/static/js/wishlist.js"></script>
+    <script src="/static/js/ui.js"></script>
+    <script src="/static/js/search.js"></script>
+    <script src="/static/js/chatbot.js"></script>
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
